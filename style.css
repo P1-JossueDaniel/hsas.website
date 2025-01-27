@@ -99,10 +99,10 @@ color: aqua;
 
 @keyframes changeImage {
   0%, 50% {
-      background-image: url(../images/cover7.jpg); /* Primera imagen durante los primeros 3 segundos */
+      background-image: url(images/cover7.jpg); /* Primera imagen durante los primeros 3 segundos */
   }
   50.1%, 100% {
-      background-image: url(../images/cover2.jpg); /* Segunda imagen durante los segundos 4 a 6 */
+      background-image: url(images/cover2.jpg); /* Segunda imagen durante los segundos 4 a 6 */
   }
 }
   
