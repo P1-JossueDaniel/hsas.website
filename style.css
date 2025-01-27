@@ -320,7 +320,7 @@ color: aqua;
 }
 
 #author-photo:hover::before {
-  background-image: url(../images/cover10.jpeg); /* URL de la imagen que se mostrará en hover */
+  background-image: url(images/cover10.jpeg); /* URL de la imagen que se mostrará en hover */
   opacity: 1; /* Hace visible el pseudoelemento al hacer hover */
 }
 
