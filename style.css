@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #081b29;
+    font-family: "Poppins", sans-serif;
+}
+
+header{
+    text-align: center;
+    padding: 35px;
+    
+}
+#head1{
+    
+    font-weight: 700;
+    font-size: 56px;
+    color: #ededed;
+    line-height: 1; /* Ajusta el espacio entre líneas */
+}
+
+
+body{ /*revisar si esto hace algo porque en el * esta el color*/
+  background: transparent;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+/* Navigation bar styles */
+nav {
+    background-color: transparent; /* Dark background color */
+    min-width: 60px;
+    font-size: 22px;
+    padding: 10px 0; /* Padding around the navigation links */
+    text-align: center; /* Center-align the links */
+   
+  }
+  nav ul {
+    list-style-type: none; /* Remove default list styles */
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    display: inline; /* Display list items horizontally */
+  }
+  nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Padding around each link */
+    font-weight: bold;
+  }
+  nav ul li a:hover,
+  .active.active {
+color: aqua;
+  } 
+
+  #book-cover {
+    position: relative;
+    width: 272px;
+    height: auto;
+    margin: 40px auto; /* Centra el contenedor horizontalmente */
+    overflow: hidden;
+}
+
+#book-cover img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+#book-cover::before,
+#book-cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: contain; /* Cambia de inline a 'contain' para ajustar la imagen completa dentro del contenedor y no se salga al estirarse como antes*/
+    background-repeat: no-repeat; /* Despues de contain, esta evita que la imagen se repita */
+    background-position: center; /* Despues de contain y no-repeat, esta centra la imagen */
+    transition: opacity 0.3s ease;
+    animation: changeImage 6s infinite;
+    
+}
+
+#book-cover:hover img {
+  opacity: 0; /* Oculta cover7 al hacer hover sobre #book-cover */
+}
+
+#book-cover:hover::before,
+#book-cover:hover::after {
+    opacity: 1;
+}
+
+@keyframes changeImage {
+  0%, 50% {
+      background-image: url(../images/cover7.jpg); /* Primera imagen durante los primeros 3 segundos */
+  }
+  50.1%, 100% {
+      background-image: url(../images/cover2.jpg); /* Segunda imagen durante los segundos 4 a 6 */
+  }
+}
+  
+  #book-details {
+    padding: 20px; /* Padding around the content */
+    
+    color: #ededed; /* Text color */
+    max-width: 750px; /* Limit width for better readability */
+    margin: 20px auto; /* Center the element horizontally and add margin */
+    text-align: justify;
+  }
+
+  #book-details h1 {
+    font-size: 34px; /* Larger font size for the heading */
+    margin-bottom: 10px; /* Space below the heading */
+    color: #00ffff; /* Darker text color for headings */
+    font-weight: bold;
+   
+  }
+  
+  #book-details p {
+    font-size: 16px;
+    margin: 20px 0 40px;
+  }
+  
+  #book-description {
+    line-height: 1.6; /* Increased line height for readability */
+  }
+  
+  @keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
+
+  #buy-now {
+    display: flex; /*inline-flex cuando tenes 2 <a> en html*/
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    padding: 10px; /*ver si se edita mas adelante*/
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    font-size: 19px;
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden; /*oculta contenido que se sale del contenedor*/
+    margin: 0 auto;
+
+}
+
+#buy-now::before { /*esta es como la caja donde va a estar el contenido cuando haga hover*/
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 0%; /*esto es 100% hasta que hago el hover before, ahi el width pasa a 0% aqui y 100% en el width del hover before*/
+   height: 100%;
+   background: #00ffff;
+   z-index: -1;
+  
+}
+
+#buy-now:hover::before { /*esto hace que al poner el mouse cambie de color */
+    width: 100%;
+} /*Si uso AFTER y no el before, solo cambiaria el color del texto a negro, no llenaria boton de celeste*/
+
+#buy-now:hover {
+    color: #081b29; /*Esto deja en negro las letras del boton Buy on Amazon while you hover*/
+    background: transparent;
+}
+
+#buy-now:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #022e2e;
+  animation: showRight 0.7s ease forwards; /* vel con que llena el boton, gracias al keyword showRight*/
+  animation-delay: 0.1;
+  z-index: 1;
+}
+
+ /* Estilos para la sub pagina de galería */
+
+#gallery-container h2 {
+  padding: 35px;
+  padding-bottom: 1px;
+  width: 100%; /* Ancho completo del contenedor para centrar el título */
+  text-align: center; /* Centra el título */
+  margin-bottom: 20px; /* Espacio inferior */
+  color: #00ffff; /* Color de texto */
+  font-size: 34px; /* Tamaño de fuente */
+}
+
+#gallery-container h3 a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #ededed;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+#gallery-container h3 a:hover {
+  background-color: transparent; /* Cambia el fondo al color del borde en hover */
+  color: #00ffff; /* Cambia el color del texto a blanco en hover */
+}
+
+#reviews {
+  max-width: 600px; /* Ancho máximo para controlar el tamaño de la galería */
+  margin: 0 auto; /* Centra la galería horizontalmente */
+  padding: 20px; /* Espacio interior alrededor de la galería */
+  display: flex; /* Utiliza flexbox para organizar los items */
+  flex-wrap: wrap; /* Permite que los items se envuelvan a la siguiente línea */
+  justify-content: space-between; /* Distribuye los items uniformemente */
+}
+
+.review {
+  width: calc(50% - 10px); /* Calcula el ancho del 50% del contenedor con margen entre columnas */
+  margin-bottom: 10px; /* Espacio entre cada imagen */
+}
+
+.review:nth-child(odd) {
+  margin-right: 10px; /* Añade margen derecho a las imágenes impares para separación */
+}
+
+.review img {
+  display: block; /* Elimina el espacio adicional */
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho disponible */
+  height: auto; /* Mantiene la proporción de aspecto */
+  border-radius: 8px; /* Bordes redondeados para un aspecto más suave */
+}
+  
+  /* Estilos para la sección de biografía del autor */
+#author-bio {
+  
+  padding: 15px; /* Espaciado alrededor del contenido */
+  
+  color: #ededed; /* Color de texto oscuro para contraste */
+  max-width: 600px; /* Ancho máximo para mejor legibilidad */
+  margin: 20px auto; /* Centrar horizontalmente con margen */
+}
+
+/* Estilos para el encabezado */
+#author-container h2 {
+  font-size: 34px; /* Tamaño de fuente más grande para el encabezado */
+  margin-bottom: 15px; /* Espacio debajo del encabezado */
+  color: #00ffff; /* Color de texto más oscuro para encabezados */
+  text-align: center;
+  padding: 35px;
+  padding-bottom: 1px;
+}
+
+#author-container h3 a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #ededed;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  display: inline-block;
+ 
+}
+
+#author-container h3 a:hover {
+  background-color: transparent; /* Cambia el fondo al color del borde en hover */
+  color: #00ffff; /* Cambia el color del texto a blanco en hover */
+}
+
+/* Estilos para el párrafo */
+#author-bio p {
+  margin: 0; /* Eliminar el margen predeterminado para los párrafos */
+  line-height: 1.6; /* Altura de línea aumentada para mejor legibilidad */
+  text-align: justify;
+  font-size: 16px;
+  padding-bottom: 43px;
+}
+
+/* Estilos para la foto del autor */
+#author-photo {
+  
+  position: relative; /* Asegura que los pseudoelementos se posicionen correctamente */
+  width: 300px; /* Ancho deseado para el contenedor */
+  height: 300px; /* Altura deseada para el contenedor */
+  overflow: hidden; /* Oculta cualquier contenido que se desborde */
+  border-radius: 40%; /* Esquinas redondeadas para la imagen */
+  margin: 0 auto; /* Centra horizontalmente */
+  text-align: center; /* Centra horizontalmente */
+  display: flex; /* Usa flexbox para alinear verticalmente */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+#author-photo::before,
+#author-photo::after {
+  content: ''; /* Necesario para que los pseudoelementos aparezcan */
+  position: absolute; /* Posición absoluta en relación con el contenedor padre */
+  top: 0;
+  left: 0;
+  width: 100%; /* Tamaño igual al contenedor */
+  height: 100%; /* Tamaño igual al contenedor */
+  background-size: cover; /* Ajusta la imagen de fondo para cubrir completamente el área */
+  background-position: center; /* Centra la imagen de fondo */
+  transition: opacity 0.3s ease; /* Transición suave de opacidad */
+  opacity: 0; /* Inicialmente invisibles */
+}
+
+#author-photo:hover::before {
+  background-image: url(../images/cover10.jpeg); /* URL de la imagen que se mostrará en hover */
+  opacity: 1; /* Hace visible el pseudoelemento al hacer hover */
+}
+
+#author-photo img {
+  max-width: 100%; /* Ajusta la imagen dentro del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */  
+}
+
+
+  footer {
+    
+    padding: 10px 20px; /* Padding around the content */
+    text-align: center; /* Center-align the content */
+    font-size: 15px; /* Font size for the text */
+    color: #ededed; /* Dark gray text color */
+    
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  footer p {
+    margin: 0; /* Remove default margin for <p> */
+    font-size: 15px;
+  }
+  footer a#top {
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+    margin-left: 10px; /* Margen izquierdo para separar del texto */
+    padding: 10px 20px; /* Espaciado dentro del botón */
+    font-size: 15px; /* Tamaño de la fuente del botón */
+    background-color: transparent; /* Color de fondo del botón */
+    color: #ededed; /* Color del texto del botón */
+    text-decoration: none; /* Quita el subrayado del enlace */
+  }
+  
+  footer a#top:hover {
+    color: aqua;
+  }
+  
+  /*AQUI INICIA MEDIA Q*/
+
+  @media (max-width: 425px) {
+    nav ul {
+      display: block;
+      text-align: center;
+    }
+    nav ul li {
+      display: block;
+      margin-bottom: 10px;
+    }
+    nav ul li a {
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 425px) {
+    #head1 {
+      font-size: 60px; /* Reducir el tamaño de fuente */
+    }
+    #head2 {
+      font-size: 24px; /* Reducir el tamaño de fuente */
+    }
+  }
+
+  #buy-now {
+    padding: 8px 15px; /* Ajustar el padding para que el botón no sea demasiado grande */
+    font-size: 14px; /* Tamaño de fuente adecuado para dispositivos móviles */
+  }
+  
+  @media (max-width: 425px) {
+    footer {
+      font-size: 12px; /* Reducir el tamaño de fuente en el footer */
+    }
+  }
+  
+  body {
+    font-size: 16px; /* Tamaño de fuente base para todo el documento */
+    line-height: 1.6; /* Espaciado entre líneas adecuado */
+  }
+  
+  @media (max-width: 425px) {
+    body {
+      font-size: 14px; /* Reducir el tamaño de fuente para pantallas más pequeñas */
+    }
+  }
